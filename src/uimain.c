@@ -10,7 +10,8 @@ int main()
 
   printf("%d\n", space_char(str[0]));
   printf("%d\n", non_space_char(str[0]));
-  printf("%d\n", *word_start(str));
-  printf("%d\n", *word_terminator(str));
+  printf("%c\n", *word_start(str));
+  printf("%c\n", *word_terminator(str));
   printf("%d\n", count_words(str));
+  printf("%c\n", *copy_str(str, 5));
 }
