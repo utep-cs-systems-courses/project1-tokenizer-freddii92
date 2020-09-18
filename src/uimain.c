@@ -15,4 +15,5 @@ int main()
   printf("%d\n", count_words(str));
   printf("%s\n", copy_str(str,5));
   print_tokens(tokenize(str));
+  free_tokens(tokenize(str));
 }
