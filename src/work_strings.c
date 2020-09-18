@@ -56,7 +56,7 @@ char *copy_str(char *inStr, short len)
 {
   char *copy = malloc(len + 1);
   int i;
-  for (int i = 0; *inStr != '\0'; i++) {
+  for (i = 0; *inStr != '\0'; i++) {
     copy[i] = *inStr;
     inStr++;
   }
@@ -96,5 +96,7 @@ void print_tokens(char **tokens)
 
 void free_tokens(char **tokens)
 {
-  
+  int i = 0;
+
+  while (tokens[i]) free(tokens[i++]);
 }
