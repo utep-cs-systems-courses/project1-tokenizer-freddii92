@@ -3,28 +3,35 @@
 #include "history.h"
 
 List* init_history() {
-  struct s_List* list = (struct s_List*)malloc(sizeof(struct s_List));
+  struct s_List *head = (struct s_List*)malloc(sizeof(struct s_List));
+  head->root = NULL;
+  return head;
 }
 
 void add_history(List *list, char *str)
 {
-  struct s_Item* t = (struct s_Item*)malloc(sizeof(struct s_Item));
-  struct s_Item* temp = (struct s_Item*)malloc(sizeof(struct s_Item));
-  //struct s_Item* t = list->root;
   
-  if (t->str == NULL) {
-    puts("This is the root.");
-    t->id = 0;
-    t->str = str;
-    t->next = NULL;
-    printf("%s\n", t->str);
-    return;
+  if (list->root == NULL) {
+    list->root = (struct s_Item*)malloc(sizeof(struct s_Item));
+    struct s_Item *head = list->root;
+    head->id = 0;
+    head->str = str;
+    head->next = NULL;
   }
-  while (t->next != NULL) {
-    t = t->next;
+  else {
+    printf("%s\n",list->root->str);
+    struct s_Item *last = list->root;
+
+    while (last->next != NULL) {
+      last = last->next;
+    }
+    last->next = (struct s_Item*)malloc(sizeof(struct s_Item));
+    last->next->id = last->id + 1;
+    last->next->str = str;
+    last->next->next = NULL;
+    printf("%s\n",last->str);
+    printf("%d\n", last->id);
   }
-  t->next = temp;
-  temp
 }
 
 int main()
@@ -34,4 +41,6 @@ int main()
   //start->root->id = 100;
   //printf("%d\n",start->root->id);
   add_history(start,"hello dude");
+  add_history(start,"whats up?");
+  add_history(start,"guess what");
 }
