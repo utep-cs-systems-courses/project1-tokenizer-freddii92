@@ -1,12 +1,31 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "tokenizer.h"
+#include "history.h"
 
 int main()
 {
-  char str[100];
+  struct s_List *list = (struct s_List*)malloc(sizeof(struct s_List));
+  
+  puts("Welcome!");
+
+  puts("Please write the sentence you would like tokenized?");
+
+  char str[50];
+  char **tokens;
+  
   printf("> ");
-  scanf("%[^\n]", str);
-  printf("%s\n", str);
-  print_tokens(tokenize(str));
-  free_tokens(tokenize(str));
+  scanf(" %[^\n]", str);
+  tokens = tokenize(str);
+  print_tokens(tokens);
+  add_history(list,str);
+  free_tokens(tokens);
+
+  free_history(list);
+  char c;
+  printf("Would you like to view the history? (y/n)\n>");
+  scanf(" %c", &c);
+  if (c == 'y') {
+    print_history(list);
+  }
 }
