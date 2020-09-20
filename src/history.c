@@ -11,12 +11,11 @@ void add_history(List *list, char *str)
 {
   if (list->root == NULL) {
     list->root = (struct s_Item*)malloc(sizeof(struct s_Item));
-    struct s_Item *head = list->root;
-    head->id = 0;
-    head->str = str;
-    head->next = NULL;
-    printf("%s\n",head->str);
-    printf("%d\n",head->id);
+    list->root->id = 0;
+    list->root->str = str;
+    list->root->next = NULL;
+    printf("%s\n", list->root->str);
+    printf("%d\n", list->root->id);
   }
   else {
     struct s_Item *last = list->root;
@@ -24,26 +23,35 @@ void add_history(List *list, char *str)
     while (last->next != NULL) {
       last = last->next;
     }
-    last->id = last->id + 1;
-    last->str = str;
-    last->next = NULL;
-    printf("%s\n",last->str);
-    printf("%d\n", last->id);
+    last->next = (struct s_Item*)malloc(sizeof(struct s_Item));
+    last->next->id = last->id + 1;
+    last->next->str = str;
+    last->next->next = NULL;
+    printf("%s\n", last->next->str);
+    printf("%d\n", last->next->id);
   }
 }
 
 char *get_history(List *list, int id)
 {
   struct s_Item *temp = list->root;
-  printf("%s\n", temp->str);
-  printf("%d\n", temp->id);
-  while (temp->next != NULL) {
+  
+  while (temp != NULL) {
     if (temp->id == id) {
       return temp->str;
     }
     temp = temp->next;
   }
   return "Not found";
+}
+
+void print_history(List *list)
+{
+  struct s_Item *temp = list->root;
+  while ( temp != NULL) {
+    printf("%s\n", temp->str);
+    temp = temp->next;
+  }
 }
 
 int main()
@@ -54,4 +62,5 @@ int main()
   add_history(start,"guess what");
   add_history(start,"this must have id 3");
   printf("%s\n",get_history(start,3));
+  print_history(start);
 }
