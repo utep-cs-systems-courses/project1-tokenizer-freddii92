@@ -21,7 +21,6 @@ int main()
   add_history(list,str);
   free_tokens(tokens);
 
-  free_history(list);
   char c;
   printf("Would you like to view the history? (y/n)\n>");
   scanf(" %c", &c);
