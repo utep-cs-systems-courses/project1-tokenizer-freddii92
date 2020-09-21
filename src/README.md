@@ -10,7 +10,7 @@ Project 1: Tokenizer
 
 # Explanation of how some functions work:
 
-  In work_strings.c:
+  # In work_strings.c:
      space_char(); checks if the current character is a whitespace using if statement.
      non_space_char(); checks if the current character is not a whitespace
      using if statement.
