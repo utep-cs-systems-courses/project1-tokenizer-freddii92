@@ -64,3 +64,8 @@ Project 1: Tokenizer
     traverse the entire linked list while at the same time is is assigning the
     new root to temp and frees each item it finds. For here, I had to change
     the root first if not it will lose the pointer.
+
+  # Makefile:
+    make - to create execution files and compile c programs
+    make clean - deleted the .o files and exec file
+    make run - runs file
