@@ -27,4 +27,6 @@ int main()
   if (c == 'y') {
     print_history(list);
   }
+  
+  free_history(list);
 }

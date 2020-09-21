@@ -53,10 +53,8 @@ void print_history(List *list)
 void free_history(List *list)
 {
   struct s_Item *temp = list->root;
-  while (temp != NULL) {
-    free(temp->str);
+  while ((temp = list->root) != NULL) {
+    list->root = list->root->next;
     free(temp);
-    temp = temp->next;
   }
-  free(list);
 }
