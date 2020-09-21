@@ -2,11 +2,13 @@
 #include <stdlib.h>
 #include "history.h"
 
+/* Initialize the linked list to keep the history. */
 List* init_history() {
   struct s_List *list = (struct s_List*)malloc(sizeof(struct s_List));
   return list;
 }
 
+/* Add a history item to the end of the list. */
 void add_history(List *list, char *str)
 {
   if (list->root == NULL) {
@@ -28,6 +30,7 @@ void add_history(List *list, char *str)
   }
 }
 
+/* Retrieve the string stored in the node where Item->id == id. */
 char *get_history(List *list, int id)
 {
   struct s_Item *temp = list->root;
@@ -41,6 +44,7 @@ char *get_history(List *list, int id)
   return "Not found";
 }
 
+/* Print the entire contents of the list. */
 void print_history(List *list)
 {
   struct s_Item *temp = list->root;
@@ -50,6 +54,7 @@ void print_history(List *list)
   }
 }
 
+/* Free the history list and the strings it references. */
 void free_history(List *list)
 {
   struct s_Item *temp = list->root;
