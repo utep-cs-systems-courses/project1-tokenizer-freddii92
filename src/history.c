@@ -63,3 +63,4 @@ void free_history(List *list)
     free(temp);
   }
 }
+
