@@ -29,7 +29,16 @@ int main()
   printf("Would you like to view the history? (y/n)\n>");
   scanf(" %c", &c);
   if (c == 'y') {
-    print_history(list);
+    char s[2];
+    printf("Entire history = h or Item in history =  !<number>\n>");
+    scanf(" %[^\n]", s);
+    if (s[0] == 'h') {
+      print_history(list);
+    }
+    if (s[0] == '!') {
+      int x = s[1] - '0';
+      printf("%s\n", get_history(list, x - 1));
+    }
   }
   
   free_history(list);
